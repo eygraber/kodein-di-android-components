@@ -24,6 +24,10 @@ android {
     }
   }
 
+  compileOptions {
+    sourceCompatibility 1.8
+    targetCompatibility 1.8
+  }
 }
 
 dokka {
@@ -44,7 +48,19 @@ dependencies {
   implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
   implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
   implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+  implementation "androidx.lifecycle:lifecycle-common-java8:2.0.0"
   implementation 'androidx.appcompat:appcompat:1.0.2'
 }
 
 apply from: project.file('publishing.gradle')
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+  sourceCompatibility = JavaVersion.VERSION_1_8
+  targetCompatibility = JavaVersion.VERSION_1_8
+
+  kotlinOptions {
+    jvmTarget = "1.8"
+
+    allWarningsAsErrors = true
+  }
+}

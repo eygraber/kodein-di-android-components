@@ -11,7 +11,7 @@ ext {
   siteUrl = 'https://github.com/eygraber/kodein-android-components'
   gitUrl = 'https://github.com/eygraber/kodein-android-components.git'
 
-  libraryVersion = '1.0.1'
+  libraryVersion = '1.1.0'
 
   developerId = 'eygraber'
   developerName = 'Eliezer Graber'
@@ -59,13 +59,13 @@ install {
 }
 
 task sourcesJar(type: Jar) {
-  classifier = 'sources'
   from android.sourceSets.main.java.srcDirs
+  archiveClassifier = "sources"
 }
 
 task javadocsJar(type: Jar) {
-  classifier = 'javadoc'
   from dokka
+  archiveClassifier = "javadoc"
 }
 
 if (JavaVersion.current().isJava8Compatible()) {
