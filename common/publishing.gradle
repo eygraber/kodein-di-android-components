@@ -1,0 +1,108 @@
+ext {
+  bintrayRepo = 'maven'
+  bintrayName = 'kodein-common'
+
+  publishedGroupId = 'com.eygraber'
+  libraryName = 'KodeinAndroidComponentsCommon'
+  artifact = 'kodein-common'
+
+  libraryDescription = 'Convenience utils for working with Kodein'
+
+  siteUrl = 'https://github.com/eygraber/kodein-android-components'
+  gitUrl = 'https://github.com/eygraber/kodein-android-components.git'
+
+  libraryVersion = rootProject.version
+
+  developerId = 'eygraber'
+  developerName = 'Eliezer Graber'
+  developerEmail = 'info@staticbloc.com'
+
+  licenseName = 'MIT'
+  licenseUrl = 'https://opensource.org/licenses/mit-license.php'
+  allLicenses = ["MIT"]
+}
+
+group = publishedGroupId
+version = libraryVersion
+
+install {
+  repositories.mavenInstaller {
+    pom.project {
+      packaging 'aar'
+      groupId publishedGroupId
+      artifactId artifact
+
+      name libraryName
+      description libraryDescription
+      url siteUrl
+
+      licenses {
+        license {
+          name licenseName
+          url licenseUrl
+        }
+      }
+      developers {
+        developer {
+          id developerId
+          name developerName
+          email developerEmail
+        }
+      }
+      scm {
+        connection gitUrl
+        developerConnection gitUrl
+        url siteUrl
+      }
+    }
+  }
+}
+
+task sourcesJar(type: Jar) {
+  from android.sourceSets.main.java.srcDirs
+  archiveClassifier = "sources"
+}
+
+task javadocsJar(type: Jar) {
+  from dokka
+  archiveClassifier = "javadoc"
+}
+
+if (JavaVersion.current().isJava8Compatible()) {
+  allprojects {
+    tasks.withType(Javadoc) {
+      options.addStringOption('Xdoclint:none', '-quiet')
+    }
+  }
+}
+
+artifacts {
+  archives sourcesJar
+  archives javadocsJar
+}
+
+if(rootProject.file('local.gradle').exists()) {
+  apply from: rootProject.file('local.gradle')
+}
+
+bintray {
+  user = project.findProperty('bintrayUser')
+  key = project.findProperty('bintrayKey')
+
+  configurations = ['archives']
+  pkg {
+    repo = bintrayRepo
+    name = bintrayName
+    desc = libraryDescription
+    websiteUrl = siteUrl
+    vcsUrl = gitUrl
+    licenses = allLicenses
+    dryRun = false
+    publish = true
+    override = false
+    publicDownloadNumbers = true
+    version {
+      desc = libraryDescription
+    }
+  }
+}

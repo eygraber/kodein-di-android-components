@@ -1,2 +1,5 @@
-include ':app', ':library'
+include ':app', ':kodein-android-components'
 rootProject.name='kodein-components'
+include ':kodein-androidx-components'
+include ':kodein-android-material-components'
+include ':common'

@@ -1,0 +1,64 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'org.jetbrains.dokka'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+dokka {
+    outputFormat = 'html'
+    outputDirectory = "$buildDir/javadoc"
+    processConfigurations = ['compile']
+
+    linkMapping {
+        dir = "src/main/java"
+        url = "https://github.com/eygraber/kodein-android-components/blob/master/kodein-android-material-components/src/main/java"
+        suffix = "#L"
+    }
+}
+
+dependencies {
+    api "com.eygraber:kodein-common:${rootProject.version}"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.kodein.di:kodein-di-erased-jvm:$kodein_version"
+    implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
+    implementation "com.google.android.material:material:1.1.0-alpha09"
+    implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
+}
+
+apply from: project.file('publishing.gradle')
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+
+        allWarningsAsErrors = true
+    }
+}
