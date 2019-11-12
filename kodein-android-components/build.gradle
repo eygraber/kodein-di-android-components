@@ -6,12 +6,12 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'org.jetbrains.dokka'
 
 android {
-  compileSdkVersion 28
+  compileSdkVersion 29
 
 
   defaultConfig {
     minSdkVersion 15
-    targetSdkVersion 28
+    targetSdkVersion 29
     versionCode 1
     versionName "1.0"
   }

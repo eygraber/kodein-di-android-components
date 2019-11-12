@@ -16,6 +16,8 @@ import org.kodein.di.internal.synchronizedIfNull
 import org.kodein.di.generic.scoped as genericallyScoped
 import org.kodein.di.generic.singleton as genericSingleton
 
+internal val ALLOWED_BUT_NOT_REQUIRED = null
+
 @PublishedApi
 internal object AndroidScope : Scope<Any> {
     private val newRegistry = ::StandardScopeRegistry
