@@ -41,7 +41,7 @@ dokka {
 }
 
 dependencies {
-    api "com.eygraber:kodein-di-common:${rootProject.version}"
+    api "com.eygraber:kodein-di-android-components-common:${rootProject.version}"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation "org.kodein.di:kodein-di:$kodein_version"
