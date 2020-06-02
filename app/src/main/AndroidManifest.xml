@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.eygraber.kodein">
+  package="com.eygraber.kodein.di">
 
   <application
     android:allowBackup="true"

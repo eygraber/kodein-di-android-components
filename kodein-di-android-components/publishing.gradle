@@ -1,12 +1,12 @@
 ext {
   bintrayRepo = 'maven'
-  bintrayName = 'kodein-di-common'
+  bintrayName = 'kodein-di-android-components'
 
   publishedGroupId = 'com.eygraber'
-  libraryName = 'KodeinDIAndroidComponentsCommon'
-  artifact = 'kodein-di-common'
+  libraryName = 'KodeinDIAndroidComponents'
+  artifact = 'kodein-di-android-components'
 
-  libraryDescription = 'Convenience utils for working with Kodein DI'
+  libraryDescription = 'Convenience utils for working with Kodein DI on Android'
 
   siteUrl = 'https://github.com/eygraber/kodein-di-android-components'
   gitUrl = 'https://github.com/eygraber/kodein-di-android-components.git'
