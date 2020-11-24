@@ -49,10 +49,8 @@ import android.view.accessibility.AccessibilityManager
 import android.view.accessibility.CaptioningManager
 import android.view.inputmethod.InputMethodManager
 import android.view.textservice.TextServicesManager
-import org.kodein.di.DI
-import org.kodein.di.DirectDIAware
+import org.kodein.di.*
 import org.kodein.di.bindings.subTypes
-import org.kodein.di.erased.*
 
 @SuppressLint("ObsoleteSdkInt")
 fun autoAndroidModule(app: Application) = DI.Module("Auto Android (No Context Scope)") {

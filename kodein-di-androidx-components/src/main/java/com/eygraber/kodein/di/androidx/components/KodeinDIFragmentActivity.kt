@@ -23,7 +23,7 @@ interface KodeinDIFragmentActivityInitializer :
         bind<Context>(overrides = true).subTypes().with { type ->
             when (type.jvmType) {
                 Application::class.java -> provider { kodeinDIComponent.application as Context }
-                else -> provider { kodeinDIComponent as Context }
+                else -> provider { kodeinDIComponent }
             }
         }
 
