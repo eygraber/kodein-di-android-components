@@ -6,13 +6,13 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleService
 import org.kodein.di.DI
-import org.kodein.di.bindings.NoArgSimpleBindingDI
+import org.kodein.di.bindings.NoArgBindingDI
 import org.kodein.di.bindings.Scope
 import org.kodein.di.bindings.ScopeRegistry
 import org.kodein.di.bindings.StandardScopeRegistry
 import org.kodein.di.internal.synchronizedIfNull
 import org.kodein.di.scoped
-import org.kodein.di.scopedSingleton
+import org.kodein.di.singleton
 
 internal val ALLOWED_BUT_NOT_REQUIRED = null
 
@@ -78,17 +78,17 @@ internal object FragmentViewScope : Scope<Fragment> {
 }
 
 inline fun <reified T : Any> DI.Builder.activitySingleton(
-    noinline creator: NoArgSimpleBindingDI<Activity>.() -> T
-) = scoped<Activity>(AndroidScope).scopedSingleton(creator = creator)
+    noinline creator: NoArgBindingDI<Activity>.() -> T
+) = scoped<Activity>(AndroidScope).singleton(creator = creator)
 
 inline fun <reified T : Any> DI.Builder.fragmentSingleton(
-    noinline creator: NoArgSimpleBindingDI<Fragment>.() -> T
-) = scoped<Fragment>(AndroidScope).scopedSingleton(creator = creator)
+    noinline creator: NoArgBindingDI<Fragment>.() -> T
+) = scoped<Fragment>(AndroidScope).singleton(creator = creator)
 
 inline fun <reified T : Any> DI.Builder.fragmentViewSingleton(
-    noinline creator: NoArgSimpleBindingDI<Fragment>.() -> T
-) = scoped(FragmentViewScope).scopedSingleton(creator = creator)
+    noinline creator: NoArgBindingDI<Fragment>.() -> T
+) = scoped(FragmentViewScope).singleton(creator = creator)
 
 inline fun <reified T : Any> DI.Builder.lifecycleServiceSingleton(
-    noinline creator: NoArgSimpleBindingDI<LifecycleService>.() -> T
-) = scoped<LifecycleService>(AndroidScope).scopedSingleton(creator = creator)
+    noinline creator: NoArgBindingDI<LifecycleService>.() -> T
+) = scoped<LifecycleService>(AndroidScope).singleton(creator = creator)
