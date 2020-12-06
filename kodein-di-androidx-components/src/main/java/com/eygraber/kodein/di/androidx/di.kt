@@ -6,11 +6,13 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LifecycleService
 import org.kodein.di.DI
+import org.kodein.di.bindings.BindingDI
 import org.kodein.di.bindings.NoArgBindingDI
 import org.kodein.di.bindings.Scope
 import org.kodein.di.bindings.ScopeRegistry
 import org.kodein.di.bindings.StandardScopeRegistry
 import org.kodein.di.internal.synchronizedIfNull
+import org.kodein.di.multiton
 import org.kodein.di.scoped
 import org.kodein.di.singleton
 
@@ -84,6 +86,14 @@ inline fun <reified T : Any> DI.Builder.activitySingleton(
 inline fun <reified T : Any> DI.Builder.fragmentSingleton(
     noinline creator: NoArgBindingDI<Fragment>.() -> T
 ) = scoped<Fragment>(AndroidScope).singleton(creator = creator)
+
+inline fun <reified A : Any, reified T : Any> DI.Builder.activityMultiton(
+    noinline creator: BindingDI<Activity>.(A) -> T
+) = scoped<Activity>(AndroidScope).multiton(creator = creator)
+
+inline fun <reified A : Any, reified T : Any> DI.Builder.fragmentMultiton(
+    noinline creator: BindingDI<Fragment>.(A) -> T
+) = scoped<Fragment>(AndroidScope).multiton(creator = creator)
 
 inline fun <reified T : Any> DI.Builder.fragmentViewSingleton(
     noinline creator: NoArgBindingDI<Fragment>.() -> T
