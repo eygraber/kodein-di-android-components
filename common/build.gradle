@@ -43,7 +43,7 @@ dokka {
 
 dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-  implementation "com.eygraber.kodein.di:kodein-di:$kodein_version"
+  implementation "org.kodein.di:kodein-di:$kodein_version"
 }
 
 apply from: project.file('publishing.gradle')
