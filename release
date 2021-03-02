@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 
-./gradlew :common:clean :common:build :common:publish :common:closeAndReleaseRepository --no-daemon --no-parallel
-./gradlew :kodein-di-android-components:clean :kodein-di-android-components:build :kodein-di-android-components:publish :kodein-di-android-components:closeAndReleaseRepository --no-daemon --no-parallel
-./gradlew :kodein-di-androidx-components:clean :kodein-di-androidx-components:build :kodein-di-androidx-components:publish :kodein-di-androidx-components:closeAndReleaseRepository --no-daemon --no-parallel
-./gradlew :kodein-di-android-material-components:clean :kodein-di-android-material-components:build :kodein-di-android-material-components:publish :kodein-di-android-material-components:closeAndReleaseRepository --no-daemon --no-parallel
+./gradlew :common:clean :common:build :common:publish --no-daemon --no-parallel
+./gradlew :common:closeAndReleaseRepository
+./gradlew :kodein-di-android-components:clean :kodein-di-android-components:build :kodein-di-android-components:publish --no-daemon --no-parallel
+./gradlew :kodein-di-android-components:closeAndReleaseRepository
+./gradlew :kodein-di-androidx-components:clean :kodein-di-androidx-components:build :kodein-di-androidx-components:publish --no-daemon --no-parallel
+./gradlew :kodein-di-androidx-components:closeAndReleaseRepository
+./gradlew :kodein-di-android-material-components:clean :kodein-di-android-material-components:build :kodein-di-android-material-components:publish --no-daemon --no-parallel
+./gradlew :kodein-di-android-material-components:closeAndReleaseRepository
