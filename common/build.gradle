@@ -1,10 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'org.jetbrains.dokka'
-
 android {
   compileSdkVersion 30
 
@@ -29,24 +25,12 @@ android {
   }
 }
 
-dokka {
-  outputFormat = 'html'
-  outputDirectory = "$buildDir/javadoc"
-  processConfigurations = ['compile']
-
-  linkMapping {
-    dir = "src/main/java"
-    url = "https://github.com/eygraber/kodein-di-android-components/blob/master/common/src/main/java"
-    suffix = "#L"
-  }
-}
-
 dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
   implementation "org.kodein.di:kodein-di:$kodein_version"
 }
 
-apply from: project.file('publishing.gradle')
+apply from: rootProject.file('publishing.gradle')
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
   sourceCompatibility = JavaVersion.VERSION_1_8

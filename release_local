@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-./gradlew :common:clean :common:build :common:install
-./gradlew :kodein-di-android-components:clean :kodein-di-android-components:build :kodein-di-android-components:install
-./gradlew :kodein-di-androidx-components:clean :kodein-di-androidx-components:build :kodein-di-androidx-components:install
-./gradlew :kodein-di-android-material-components:clean :kodein-di-android-material-components:build :kodein-di-android-material-components:install
+./gradlew :common:clean :common:build :common:publishToMavenLocal --no-daemon --no-parallel
+./gradlew :kodein-di-android-components:clean :kodein-di-android-components:build :kodein-di-android-components:publishToMavenLocal --no-daemon --no-parallel
+./gradlew :kodein-di-androidx-components:clean :kodein-di-androidx-components:build :kodein-di-androidx-components:publishToMavenLocal --no-daemon --no-parallel
+./gradlew :kodein-di-android-material-components:clean :kodein-di-android-material-components:build :kodein-di-android-material-components:publishToMavenLocal --no-daemon --no-parallel
