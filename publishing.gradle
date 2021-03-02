@@ -20,7 +20,7 @@ mavenPublish {
 }
 
 def getGpgKey() {
-  return hasProperty('signingKey') ? signingKey : ""
+  return findProperty("signingKey") ?: ""
 }
 
 signing {
