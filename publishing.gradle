@@ -26,6 +26,6 @@ def getGpgKey() {
 signing {
   def signingKey = getGpgKey()
   if(!signingKey.isEmpty()) {
-    useInMemoryPgpKeys(signingKey, findProperty("signingPassword"))
+    useInMemoryPgpKeys(signingKey, "")
   }
 }
