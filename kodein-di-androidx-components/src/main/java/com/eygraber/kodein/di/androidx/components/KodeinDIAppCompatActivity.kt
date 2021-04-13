@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentManager
 import com.eygraber.kodein.di.KodeinDIComponentInitializer
 import com.eygraber.kodein.di.KodeinDIComponentInitializer.ACTIVITY_LAYOUT_INFLATER_TAG
 import org.kodein.di.DI
-import org.kodein.di.android.di
+import org.kodein.di.android.closestDI
 import org.kodein.di.bind
 import org.kodein.di.bindings.subTypes
 import org.kodein.di.provider
@@ -36,7 +36,7 @@ interface KodeinDIAppCompatActivityInitializer :
 
 abstract class KodeinDIAppCompatActivity : AppCompatActivity(),
     KodeinDIAppCompatActivityInitializer {
-    override val parentDI: DI by di()
+    override val parentDI: DI by closestDI()
 
     @Suppress("LeakingThis")
     override val di = initializeKodeinDI()

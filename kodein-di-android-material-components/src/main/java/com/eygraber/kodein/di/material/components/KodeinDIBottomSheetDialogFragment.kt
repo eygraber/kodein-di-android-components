@@ -6,7 +6,7 @@ import com.eygraber.kodein.di.KodeinDIComponentInitializer.PARENT_FRAGMENT_TAG
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.kodein.di.DI
 import org.kodein.di.DIAware
-import org.kodein.di.android.x.di
+import org.kodein.di.android.x.closestDI
 import org.kodein.di.bind
 import org.kodein.di.provider
 
@@ -36,7 +36,7 @@ interface KodeinDIBottomSheetDialogFragmentInitializer :
 
 abstract class KodeinDIBottomSheetDialogFragment : BottomSheetDialogFragment(),
     KodeinDIBottomSheetDialogFragmentInitializer {
-    override val parentDI: DI by di()
+    override val parentDI: DI by closestDI()
 
     @Suppress("LeakingThis")
     override val di = initializeKodeinDI()

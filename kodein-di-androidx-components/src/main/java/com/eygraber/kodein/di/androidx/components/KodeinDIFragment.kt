@@ -6,7 +6,7 @@ import com.eygraber.kodein.di.KodeinDIComponentInitializer.PARENT_FRAGMENT_TAG
 import com.eygraber.kodein.di.androidx.ALLOWED_BUT_NOT_REQUIRED
 import org.kodein.di.DI
 import org.kodein.di.DIAware
-import org.kodein.di.android.x.di
+import org.kodein.di.android.x.closestDI
 import org.kodein.di.bind
 import org.kodein.di.provider
 
@@ -38,7 +38,7 @@ interface KodeinDIFragmentInitializer :
 
 abstract class KodeinDIFragment : Fragment(),
     KodeinDIFragmentInitializer {
-    override val parentDI: DI by di()
+    override val parentDI: DI by closestDI()
 
     @Suppress("LeakingThis")
     override val di = initializeKodeinDI()
