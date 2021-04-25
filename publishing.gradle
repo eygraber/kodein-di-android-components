@@ -1,20 +1,6 @@
 apply plugin: 'org.jetbrains.dokka'
 apply plugin: 'com.vanniktech.maven.publish'
-apply plugin: 'signing'
 
 mavenPublish {
-  releaseSigningEnabled = !getGpgKey().isEmpty()
-
   sonatypeHost = "S01"
-}
-
-def getGpgKey() {
-  return findProperty("signingKey") ?: ""
-}
-
-signing {
-  def signingKey = getGpgKey()
-  if(!signingKey.isEmpty()) {
-    useInMemoryPgpKeys(signingKey, "")
-  }
 }
