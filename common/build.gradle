@@ -20,8 +20,12 @@ android {
   }
 
   compileOptions {
-    sourceCompatibility 1.8
-    targetCompatibility 1.8
+    sourceCompatibility 11
+    targetCompatibility 11
+  }
+
+  kotlinOptions {
+    jvmTarget = "11"
   }
 }
 
@@ -31,14 +35,3 @@ dependencies {
 }
 
 apply from: rootProject.file('publishing.gradle')
-
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-  sourceCompatibility = JavaVersion.VERSION_1_8
-  targetCompatibility = JavaVersion.VERSION_1_8
-
-  kotlinOptions {
-    jvmTarget = "1.8"
-
-    allWarningsAsErrors = true
-  }
-}
